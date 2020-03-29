@@ -44,13 +44,13 @@ router.get('/json-example', (req, res, next) => {
  * - save image file
  * - save results as JSON (for later use)
  */
- router.post('/upload', (req, res, next) => {
- 	res.send('TODO');
- });
+router.post('/upload', (req, res, next) => {
+	res.send('TODO');
+});
 
- // ayye I'm workin on it alright?
- router.get('/upload', (req, res, next) => {
- 	res.send('TODO');
- });
+// ayye I'm workin on it alright?
+router.get('/upload', (req, res, next) => {
+	res.send('TODO');
+});
 
- module.exports = router;
+module.exports = router;
