@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title><%= title %></title>
-        <link rel='stylesheet' href='/stylesheets/style.css' />
-    </head>
-    <body>
-        <h1><%= title %></h1>
-        <!-- markup is based on example provided by https://blog.logrocket.com/how-to-extract-text-from-an-image-using-javascript-8fe282fb0e71/ -->
-        <label for="recognition-image-input">Upload image</label>
-        <input type="file" accept="image/jpeg, image/png" id="recognition-image-input" /><br />
-        <label for="recognition-confidence-input">Select your confidence</label>
-        <input type="number" max="100" min="0" id="recognition-confidence-input" value="70" /><br />
-        <label for="recognition-progress">Progress:</label>
-        <progress id="recognition-progress" max="100" value="0">0%</progress>
-        <div id="recognition-text"></div>
-        <div id="recognition-images">
-            <div id="original-image"></div>
-            <div id="labeled-image"></div>
-        </div>
-        <!--  Add the latest tesseract script for future front end handling -->
-        <script src='https://unpkg.com/tesseract.js@v2.1.1/dist/tesseract.min.js'></script>
-    </body>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <!--  Add the latest Tesseract script front end interaction -->
+    <script src='https://unpkg.com/tesseract.js@v2.1.1/dist/tesseract.min.js'></script>
+</head>
+<body>
+    <h1><%= title %></h1>
+    <!-- based on example provided by LogRocket -->
+    <label for="recognition-image-input">Upload image</label>
+    <input type="file" accept="image/jpeg, image/png" id="recognition-image-input" /><br />
+    <label for="recognition-confidence-input">Select your confidence level (85 or more works best from my experience</label>
+    <input type="number" max="100" min="0" id="recognition-confidence-input" value="70" /><br />
+    <label for="recognition-progress">Progress:</label>
+    <progress id="recognition-progress" max="100" value="0">0%</progress>
+    <div id="recognition-text">
+        <div>Below is the text Tesseract successfully identified</div>
+    </div>
+    <div id="recognition-images">
+        <div id="labeled-image"></div>
+    </div>
+    <script src='/javascripts/images.js'></script>
+</body>
 </html>
