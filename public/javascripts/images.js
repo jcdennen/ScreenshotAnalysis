@@ -50,10 +50,13 @@ const worker = Tesseract.createWorker({
     await worker.terminate();
 
     // I'm more interested in pulling out the lines and performing some analysis on them (more to come)
-    const lines = data.lines.filter((line) => {
-        return line.confidence >= 85; // generally, anything less than 85 is bad
+    const linesElements = data.lines.filter((line) => {
+        return line.confidence >= parseInt(recognitionConfidenceElement.value, 10);
+    }).map(({ text }) => {
+        const p = document.createElement('p');
+        p.textContent = text;
+        return p;
     });
-    console.log((lines.length ? lines :  "couldn't find anything with enough confidence"));
 
     // The rest is related to the example this is built off of
     const labeledImage = document.createElement('img');
@@ -64,7 +67,15 @@ const worker = Tesseract.createWorker({
         p.textContent = text;
         return p;
     });
-    recognitionTextElement.append(...paragraphsElements);
+
+    if (linesElements.length) {
+        recognitionTextElement.append(...linesElements);
+    }
+    else {
+        const p = document.createElement('p');
+        p.textContent = text;
+        recognitionTextElement.append(...p);
+    }
 
     const wordsElements = data.words
         .filter(({ confidence }) => {
